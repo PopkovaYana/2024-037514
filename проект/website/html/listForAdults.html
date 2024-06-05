@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Для взрослых.</title>
+  <link rel="stylesheet" href="../css/slider.css">
+  <script src="../js/slider.js" defer></script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e4d2e1;
+      margin: 0;
+      font-family: 'century gothic';
+    }
+
+    .container {
+      background: #e4d2e1;
+      height: 600px;
+      padding: 25px 20% 100px 20%
+    }
+
+    .itc-slider-items {
+      counter-reset: slide;
+    }
+
+    .itc-slider-item {
+      flex: 0 0 100%;
+      max-width: 100%;
+      counter-increment: slide;
+      height: 400px;
+      position: relative;
+    }
+
+    .itc-slider-item::before {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #fff;
+      font-style: italic;
+      font-size: 32px;
+      font-weight: bold;
+      display: block;
+    }
+
+    h1 {
+      color: #FE5100;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 40px;
+    }
+
+    .a {
+      max-width: auto;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .o-nas {
+      display: flex;
+      height: 400px;
+      width: 100%;
+
+    }
+
+    .program {
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .elem {
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      height: 200px;
+      width: 200px;
+    }
+
+    .text {
+      height: 300px;
+      width: 500px;
+    }
+
+    .knopka {
+      display: inline-block;
+    }
+
+    .pokatak {
+      display: block;
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #333;
+      border: 2px solid #333;
+      letter-spacing: 2px;
+      text-align: center;
+      position: relative;
+      transition: all .35s;
+    }
+
+    span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .pokatak:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #ff003b;
+      transition: all .35s;
+    }
+
+    .pokatak:hover {
+      color: #fff;
+    }
+
+    .pokatak:hover:after {
+      width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header style="background: #e4d2e1;">
+    <div class="a">
+      <div class="a">
+        <a href="../html/index.html" target="_parent" style="color: #4a4a4a;"><b style="font-size: 30px;">О
+            компании</b></a>
+      </div>
+      <div class="a">
+        <a href="../html/index.html" target="_parent" style="color: #4a4a4a;"><b
+            style="font-size: 30px;">Программы</b></a>
+      </div>
+      <div class="a">
+        <a href="../../bd/html/formForCompanyRegister.html" target="_parent" style="color: #4a4a4a;"><b
+            style="font-size: 30px;">Для организаций</b></a>
+      </div>
+      <div class="a">
+        <a href="../../login/templates/login.html" target="_parent" style="color: #4a4a4a;"><b
+            style="font-size: 30px;">Вход</b></a>
+      </div>
+    </div>
+  </header>
+  <h1 align="center" style="font-size: 40px;">Для взрослых</h1>
+  <div class="container">
+
+    <div class="itc-slider" data-slider="itc-slider" data-loop="true" data-autoplay="false">
+      <div class="itc-slider-wrapper">
+        <div class="itc-slider-items">
+          <div class="itc-slider-item">
+            <div class="o-nas">
+              <div><img src="../images/jpxo045zr843i67vjle3lqqk20cvsvd5.jpg" height="400px" width="400px"></div>
+              <div class="knopka">
+                <div class="text" align=" center">
+                  <h1 align=" center" style="margin-bottom: 10px;">Огненое шоу</h1>
+                  <div
+                    style="font-size: 17px; color:#4a4a4a;margin-left: 30px;margin-right: 20px;text-align: left;line-height: 1.2;">
+                    Огненное шоу — это поистине обворожительный спектакль покорения огненной стихии.
+                    Это уникальное и, как кажется со стороны, неповторимое представление,
+                    где спокойная и точная грация артистов выгодно контрастирует с невероятно-стремительной динамикой
+                    просто беснующего вокруг пламени.
+                    Это зрелище завораживает своей точно продуманной идеальной геометрией и одновременно шокирует мощью
+                    и силой огненного хаоса.
+
+                  </div>
+                </div>
+                <div align=" center">
+                  <div class="wrapper" align="center"><a href="../html/listTheFireShow.html"><button
+                        class="pokatak"><span>Подробнее</span></button></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="itc-slider-item">
+            <div class="o-nas">
+              <div><img src="../images/229_2018-12-30_11-05.jpg" height="400px" width="400px"></div>
+              <div class="knopka">
+                <div class="text" align=" center">
+                  <h1 align=" center" style="margin-bottom: 10px;">Акробатическое шоу</h1>
+                  <div
+                    style="font-size: 17px; color:#4a4a4a;margin-left: 30px;margin-right: 20px;text-align: left;line-height: 1.2;">
+                    Силовое акробатическое шоу — команда артистов с многолетним опытом выступлений на мероприятиях
+                    различного масштаба.
+                    Все выступления с оригинальными сюжетами.
+                    <br><br>Можем приспособиться в считанные секунды под любые неожиданности.
+                    Активная работа со зрителем в формате интерактива. Никто не останется равнодушным!
+                  </div>
+                </div>
+                <div align=" center">
+                  <div class="wrapper" align="center"><a href="../html/listAcrobaticShow.html"><button class="pokatak"
+                        href="#"><span>Подробнее</span></button></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="itc-slider-btn itc-slider-btn-prev"></button>
+      <button class="itc-slider-btn itc-slider-btn-next"></button>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

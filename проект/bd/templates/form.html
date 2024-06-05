@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Форма</title>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+
+body {
+	font-family:'century gothic';
+	font-weight:300;
+	font-size: 12px;
+	line-height:30px;
+	color:#4a4a4a;
+	background:#e4d2e1;
+}
+
+.container {
+	max-width:400px;
+	width:90%;
+	margin:0 auto;
+	position:relative;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[name="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#contact {
+	background:#F9F9F9;
+	padding:25px;
+	margin:50px 0;
+}
+
+#contact h3 {
+	color: #4a4a4a;
+	display: block;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#contact h4 {
+	margin:5px 0 10px;
+	display:block;
+	font-size:13px;
+}
+
+p {
+	border: medium none !important;
+	margin: 0 0 10px;
+	min-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
+	width:100%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+
+#contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+
+#contact textarea {
+	height:100px;
+	max-width:100%;
+  resize:none;
+}
+
+#contact button[name="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#e4d2e1;
+	color:#4a4a4a;
+	margin:0 0 5px;
+	padding:10px;
+	font-size:15px;
+}
+
+#contact button[name="submit"]:hover {
+	background:#e4d2e1;
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+
+#contact button[name="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#contact input:focus, #contact textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+ color:#888;
+}
+:-moz-placeholder {
+ color:#888;
+}
+::-moz-placeholder {
+ color:#888;
+}
+:-ms-input-placeholder {
+ color:#888;
+}
+</style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <form id="contact" action="">
+        <h3><b>Оставить заявку</b></h3>
+        <h4>Организатор свяжется с вами в течение 24 часов!</h4>
+        <input type="hidden" id="userId" />
+        <p>
+            Имя:<br/>
+            <input type="text" id="userName" placeholder="Ваше имя" pattern="[А-Я][а-я]+" maxlength="15" required autofocus/>
+        </p>
+        <p>
+            Почта:<br />
+            <input placeholder="Ваша почта" type="email" id="useremail"   required/>
+        </p>
+        <p>
+            Телефон:<br />
+            <input placeholder="7(___)-___-__-__" type="text" id="usernumber" pattern="7[0-9]{10}" required/>
+        </p>
+        <p>
+            Программа:<br />
+            <select id="userprog" required>
+                <option value="select"> </option>
+                <option value="Фиксики">Фиксики</option>
+                <option value="Маша_и_медведь">Маша и медведь</option>
+                <option value="Смешарики">Смешарики</option>
+                <option value="Шоу_мыльных_пузырей">Шоу мыльных пузырей</option>
+                <option value="Шоу_жареного_мороженого">Шоу жареного мороженого</option>
+                <option value="Шоу_бумажный_дом">Шоу бумажный дом</option>
+                <option value="3D_анимация">3D анимация</option>
+                <option value="Шоу_илюзии">Шоу илюзии</option>
+                <option value="Кунг_Фу_Панда">Кунг Фу Панда</option>
+                <option value="Огненое_шоу">Огненое шоу</option>
+                <option value="Акробатическое_шоу">Акробатическое шоу</option>
+		  </select>
+        </p>
+        <p>
+            Компании:<br />
+            <select id="usercomp" required>
+                <option class="select" value="select"> </option>
+                <option class="Фиксики"value="Арт-студио">Арт-студио</option>
+                <option class="Фиксики"value="FunToYOU">FunToYOU</option>
+                <option class="Фиксики"value="Virtual">Virtual</option>
+                <option class="Маша_и_медведь"value="Арт-студио">Арт-студио</option>
+                <option class="Маша_и_медведь"value="FunToYOU">FunToYOU</option>
+                <option class="Маша_и_медведь"value="Virtual">Virtual</option>
+                <option class="Смешарики"value="Арт-студио">Арт-студио</option>
+                <option class="Смешарики"value="FunToYOU">FunToYOU</option>
+                <option class="Смешарики"value="Virtual">Virtual</option>
+                <option class="Шоу_мыльных_пузырей"value="Арт-студио">Арт-студио</option>
+                <option class="Шоу_мыльных_пузырей"value="FunToYOU">FunToYOU</option>
+                <option class="Шоу_мыльных_пузырей"value="Virtual">Virtual</option>
+                <option class="Шоу_жареного_мороженого"value="Арт-студио">Арт-студио</option>
+                <option class="Шоу_жареного_мороженого"value="FunToYOU">FunToYOU</option>
+                <option class="Шоу_жареного_мороженого"value="Virtual">Virtual</option>
+                <option class="Шоу_бумажный_дом"value="Арт-студио">Арт-студио</option>
+                <option class="Шоу_бумажный_дом"value="FunToYOU">FunToYOU</option>
+                <option class="Шоу_бумажный_дом"value="Virtual">Virtual</option>
+                <option class="3D_анимация"value="Арт-студио">Арт-студио</option>
+                <option class="3D_анимация"value="FunToYOU">FunToYOU</option>
+                <option class="3D_анимация"value="Virtual">Virtual</option>
+                <option class="Шоу_илюзии"value="Арт-студио">Арт-студио</option>
+                <option class="Шоу_илюзии"value="FunToYOU">FunToYOU</option>
+                <option class="Шоу_илюзии"value="Virtual">Virtual</option>
+                <option class="Кунг_Фу_Панда"value="Арт-студио">Арт-студио</option>
+                <option class="Кунг_Фу_Панда"value="FunToYOU">FunToYOU</option>
+                <option class="Кунг_Фу_Панда"value="Virtual">Virtual</option>
+                <option class="Огненое_шоу"value="Арт-студио">Арт-студио</option>
+                <option class="Огненое_шоу"value="FunToYOU">FunToYOU</option>
+                <option class="Акробатическое_шоу"value="Virtual">Virtual</option>
+                <option class="Акробатическое_шоу"value="FunToYOU">FunToYOU</option>
+            </select>
+        </p>
+        <p>
+            Дата:<br />
+            <input type="date" id="userdate"  name="trip-start" value="2024-01-01" min="2024-01-01" max="2024-12-31" required/>
+        </p>
+        <p>
+            Коментарии:<br />
+            <input placeholder="Ваши пожелания...." id="usercoment" type="text" tabindex="5"/>
+        </p>
+        <p>
+            <div class="g-recaptcha" data-sitekey="6Lftps8pAAAAANQXAUPl-OcPmpoUnXbQcRSXdQy0"></div>
+        </p>
+        <p>
+            <button name="submit"  id="saveBtn">Отправить</button>
+            <button id="resetBtn" hidden>Сбросить</button>
+        </p>
+    </form>
+    </div>
+    <script>
+        $('#form').submit(function(){
+            var response = grecaptcha.getResponse();
+            if(response.length == 0) {
+                alert('Вы не прошли проверку CAPTCHA должным образом');
+                return false;
+            }
+        });
+    </script>
+    <script>
+    (() => {
+        const dynamicSelect = (id1, id2) => {
+          const sel1 = document.getElementById(id1);
+          const sel2 = document.getElementById(id2);
+          const clone = sel2.cloneNode(true);
+          const clonedOptions = clone.getElementsByTagName("option");
+          refreshDynamicSelectOptions(sel1, sel2, clonedOptions);
+          sel1.addEventListener('change', () => {
+            refreshDynamicSelectOptions(sel1, sel2, clonedOptions);
+          });
+        };
+      
+        const refreshDynamicSelectOptions = (sel1, sel2, clonedOptions) => {
+          while (sel2.options.length) {
+            sel2.remove(0);
+          }
+          const selectedOption = sel1.options[sel1.selectedIndex].value;
+          for (let i = 0; i < clonedOptions.length; i++) {
+            const option = clonedOptions[i];
+            if (option.classList.contains('select') ||
+              option.classList.contains(selectedOption)) {
+              sel2.appendChild(option.cloneNode(true));
+            }
+          }
+          const event = document.createEvent('HTMLEvents');
+          event.initEvent('change', true, false);
+          sel2.dispatchEvent(event);
+        };
+      
+        document.addEventListener("DOMContentLoaded", () => {
+          dynamicSelect("userprog", "usercomp");
+      
+        });
+      })();
+    </script>
+    <script>
+        async function getUsers() {
+            const response = await fetch("/api/users", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const users = await response.json();
+                const rows = document.querySelector("tbody");
+                users.forEach(user => rows.append(row(user)));
+            }
+        }
+        async function getUser(id) {
+            const response = await fetch(`/api/users/${id}`, {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                document.getElementById("userId").value = user.id;
+                document.getElementById("userName").value = user.name;
+                document.getElementById("useremail").value = user.email;
+                document.getElementById("usernumber").value = user.number;
+                document.getElementById("userprog").value = user.prog;
+                document.getElementById("usercomp").value = user.comp;
+                document.getElementById("userdate").value = user.date;
+                document.getElementById("usercoment").value = user.coment;
+                
+            }
+            else {
+                const error = await response.json();
+                console.log(error.messemail);
+            }
+        }
+        async function createUser(userName, useremail, usernumber, userprog, usercomp, userdate, usercoment) {
+  
+            const response = await fetch("api/users", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: userName,
+                    email: useremail,
+                    number: usernumber,
+                    prog: userprog,
+                    comp: usercomp,
+                    date: userdate,
+                    coment: usercoment
+                })
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                document.querySelector("tbody").append(row(user));
+            }
+            else {
+                const error = await response.json();
+                console.log(error.messemail);
+            }
+        }
+        async function editUser(userId, userName, useremail, usernumber, userprog, usercomp, userdate, usercoment) {
+            const response = await fetch("api/users", {
+                method: "PUT",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: userId,
+                    name: userName,
+                    email: useremail,
+                    number: usernumber,
+                    prog: userprog,
+                    comp: usercomp,
+                    date: userdate,
+                    coment: usercoment
+                })
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                document.querySelector(`tr[data-rowid='${user.id}']`).replaceWith(row(user));
+            }
+            else {
+                const error = await response.json();
+                console.log(error.messemail);
+            }
+        }
+
+        async function deleteUser(id) {
+            const response = await fetch(`/api/users/${id}`, {
+                method: "DELETE",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                document.querySelector(`tr[data-rowid='${user.id}']`).remove();
+            }
+            else {
+                const error = await response.json();
+                console.log(error.messemail);
+            }
+        }
+  
+
+        function reset() {
+            document.getElementById("userId").value = 
+            document.getElementById("userName").value = 
+            document.getElementById("useremail").value = 
+            document.getElementById("userprog").value =
+            document.getElementById("usercomp").value =
+            document.getElementById("usernumber").value = 
+            document.getElementById("userdate").value =
+            document.getElementById("usercoment").value = "";
+        }
+
+        function row(user) {
+  
+            const tr = document.createElement("tr");
+            tr.setAttribute("data-rowid", user.id);
+  
+            const nameTd = document.createElement("td");
+            nameTd.append(user.name);
+            tr.append(nameTd);
+  
+            const emailTd = document.createElement("td");
+            emailTd.append(user.email);
+            tr.append(emailTd);
+
+            const progTd = document.createElement("td");
+            progTd.append(user.prog);
+            tr.append(progTd);
+
+            const compTd = document.createElement("td");
+            compTd.append(user.comp);
+            tr.append(compTd);
+
+            const numberTd = document.createElement("td");
+            numberTd.append(user.number);
+            tr.append(numberTd);
+                        
+            const dateTd = document.createElement("td");
+            dateTd.append(user.date);
+            tr.append(dateTd);
+                        
+            const comentTd = document.createElement("td");
+            comentTd.append(user.coment);
+            tr.append(comentTd);
+  
+            const linksTd = document.createElement("td");
+  
+            const editLink = document.createElement("button"); 
+            editLink.append("Изменить");
+            editLink.addEventListener("click", async() => await getUser(user.id));
+            linksTd.append(editLink);
+  
+            const removeLink = document.createElement("button"); 
+            removeLink.append("Удалить");
+            removeLink.addEventListener("click", async () => await deleteUser(user.id));
+  
+            linksTd.append(removeLink);
+            tr.appendChild(linksTd);
+  
+            return tr;
+        }
+
+        document.getElementById("resetBtn").addEventListener("click", () =>  reset());
+  
+
+        document.getElementById("saveBtn").addEventListener("click", async () => {
+             
+            const id = document.getElementById("userId").value;
+            const name = document.getElementById("userName").value;
+            const email = document.getElementById("useremail").value;
+            const prog = document.getElementById("userprog").value;
+            const comp = document.getElementById("usercomp").value;
+            const number = document.getElementById("usernumber").value;
+            const date = document.getElementById("userdate").value;
+            const coment = document.getElementById("usercoment").value;
+            if (id === "")
+                await createUser(name, email, number, prog, comp, date, coment);
+            else
+                await editUser(id, name, email, number, prog, comp, date, coment);
+            reset();
+        });
+  
+
+        getUsers();
+    </script>
+</body>
+</html>

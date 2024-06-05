@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <script>
+        </script>
+        <style>
+            * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    background-color: #435165;
+    margin: 0;
+}
+.login, .register {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+}
+.login h1, .register h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.login .links, .register .links {
+    display: flex;
+    padding: 0 15px;
+}
+.login .links a, .register .links a {
+    color: #adb2ba;
+    text-decoration: none;
+    display: inline-flex;
+    padding: 0 10px 10px 10px;
+    font-weight: bold;
+}
+.login .links a:hover, .register .links a:hover {
+    color: #9da3ac;
+}
+.login .links a.active, .register .links a.active {
+    border-bottom: 3px solid #3274d6;
+    color: #3274d6;
+}
+.login form, .register form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.login form label, .register form label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #3274d6;
+    color: #ffffff;
+}
+.login form input[type="password"], .login form input[type="text"], .login form input[type="email"], .register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+.login form input[type="submit"], .register form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #3274d6;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover, .register form input[type="submit"]:hover {
+    background-color: #2868c7;
+    transition: background-color 0.2s;
+}
+.navtop {
+    background-color: #e4d2e1;
+    height: 60px;
+    width: 100%;
+    border: 0;
+}
+.navtop div {
+    display: flex;
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+}
+.navtop div h1, .navtop div a {
+    display: inline-flex;
+    align-items: center;
+}
+.navtop div h1 {
+    flex: 1;
+    font-size: 24px;
+    padding: 0;
+   margin: 0;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+.navtop div a {
+    padding: 0 20px;
+    text-decoration: none;
+    color: #4a4a4a;
+    font-weight: bold;
+}
+.navtop div a i {
+    padding: 2px 8px 0 0;
+}
+.navtop div a:hover {
+    color: #eaebed;
+}
+body.loggedin {
+    background-color: #f3f4f7;
+}
+.content {
+    width: 1000px;
+    margin: 0 auto;
+}
+.content h2 {
+    margin: 0;
+    padding: 25px 0;
+    font-size: 22px;
+    border-bottom: 1px solid #e0e0e3;
+    color: #4a4a4a;
+}
+.content > p, .content > div {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    margin: 25px 0;
+    padding: 25px;
+  background-color: #fff;
+}
+.content > p table td, .content > div table td {
+  padding: 5px;
+}
+.content > p table td:first-child, .content > div table td:first-child {
+  font-weight: bold;
+  color: #4a4a4a;
+  padding-right: 15px;
+}
+.content > div p {
+  padding: 5px;
+  margin: 0 0 10px 0;
+}
+td,th {
+   border: 1px solid grey;
+}
+        </style>
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1> </h1>
+                <a href="{{ url_for('home') }}"><i class="fas "></i>Заявки</a>
+				<a href="{{ url_for('profile') }}"><i class="fas "></i>Профиль</a>
+				<a href="{{ url_for('logout') }}"><i class="fas "></i>Выход</a>
+			</div>
+		</nav>
+        
+		<div class="content">
+            <h2>Заявки</h2>
+        <p>Добро пожаловать, Главный администратор!</p>
+        <p><input type="submit" id="revers1" class="btn btn-success" value="Заявки от людей">
+            <input type="submit" id="revers2" class="btn btn-success" value="Заявки от компаний">
+            <input type="submit" id="remuve" class="btn btn-success" value="Очистить таблицу"></p>
+        <div hidden>
+            <input type="hidden" id="userId" />
+            <p>
+                
+                <input id="userName" placeholder="Ваше имя" required autofocus hidden/>
+            </p>
+            <p>
+                
+                <input placeholder="Ваша почта" type="email" id="useremail" hidden required/>
+            </p>
+            <p>
+                
+                <input placeholder="+_(___) ___-__-__" type="text" id="usernumber" hidden required/>
+            </p>
+            <p>
+                
+                <select id="userprog" hidden required>
+                    <option value="select">---</option>
+                    <option value="Фиксики">Фиксики</option>
+                    <option value="Маша_и_медведь">Маша и медведь</option>
+                    <option value="Смешарики">Смешарики</option>
+                    <option value="Шоу мыльных пузырей">Шоу мыльных пузырей</option>
+                    <option value="Шоу жареного мороженого">Шоу жареного мороженого</option>
+                    <option value="Шоу бумажный дом">Шоу бумажный дом</option>
+                    <option value="3D анимация">3D анимация</option>
+                    <option value="Шоу илюзии">Шоу илюзии</option>
+                    <option value="Кунг Фу Панда">Кунг Фу Панда</option>
+                    <option value="Огненое шоу">Огненое шоу</option>
+                    <option value="Акробатическое шоу">Акробатическое шоу</option>
+              </select>
+            </p>
+            <p>
+                
+                <select id="usercomp" hidden required>
+                    <option class="select" value="select">Select...</option>
+                    <option class="Фиксики"value="aa">1</option>
+                    <option class="Маша_и_медведь"value="ba">2</option>
+                    <option class="Смешарики"value="ca">1</option>
+                    <option class="Шоу мыльных пузырей"value="da">1</option>
+                    <option class="Шоу жареного мороженого"value="ea">1</option>
+                    <option class="Шоу бумажный дом"value="fa">1</option>
+                    <option class="3D анимация"value="ga">1</option>
+                    <option class="Шоу илюзии"value="ja">1</option>
+                    <option class="Кунг Фу Панда"value="ka">1</option>
+                    <option class="Огненое шоу"value="la">1</option>
+                    <option class="Акробатическое шоу"value="ma">1</option>
+                    <option class="Фиксики"value="ab">2</option>
+                    <option class="Маша и медведь"value="bb">3</option>
+                    <option class="Смешарики"value="cb">2</option>
+                    <option class="Шоу мыльных пузырей"value="db">2</option>
+                    <option class="Шоу жареного мороженого"value="eb">2</option>
+                    <option class="Шоу бумажный дом"value="fb">2</option>
+                    <option class="3D анимация"value="gb">2</option>
+                    <option class="Шоу илюзии"value="lb">2</option>
+                    <option class="Кунг Фу Панда"value="kb">2</option>
+                    <option class="Огненое шоу"value="lb">2</option>
+                    <option class="Акробатическое шоу"value="mb">2</option>
+                </select>
+            </p>
+            <p>
+                
+                <input placeholder="дд.мм.гггг" id="userdate" type="text" hidden required/>
+            </p>
+            <p>
+                
+                <input placeholder="Ваши пожелания...." id="usercoment" type="text" hidden/>
+            </p>
+             <p>
+                <button id="saveBtn"hidden>Сохранить</button>
+                <button id="resetBtn" hidden>Сбросить</button>
+            </p>
+        </div>
+        <table>
+            <thead><tr><th>Имя</th><th>Почта</th><th>Телефон</th><th>Программа</th><th>Компания</th><th>Дата/Название компании</th><th>Коментарии/Программы</th></tr></thead>
+            <tbody>
+            </tbody>
+        </table>
+        <script>
+        (() => {
+            const dynamicSelect = (id1, id2) => {
+
+              const sel1 = document.getElementById(id1);
+              const sel2 = document.getElementById(id2);
+
+              const clone = sel2.cloneNode(true);
+
+              const clonedOptions = clone.getElementsByTagName("option");
+
+              refreshDynamicSelectOptions(sel1, sel2, clonedOptions);
+
+              sel1.addEventListener('change', () => {
+                refreshDynamicSelectOptions(sel1, sel2, clonedOptions);
+              });
+            };
+          
+
+            const refreshDynamicSelectOptions = (sel1, sel2, clonedOptions) => {
+
+              while (sel2.options.length) {
+                sel2.remove(0);
+              }
+              const selectedOption = sel1.options[sel1.selectedIndex].value;
+
+              for (let i = 0; i < clonedOptions.length; i++) {
+                const option = clonedOptions[i];
+
+                if (option.classList.contains('select') ||
+                  option.classList.contains(selectedOption)) {
+
+                  sel2.appendChild(option.cloneNode(true));
+                }
+              }
+
+              const event = document.createEvent('HTMLEvents');
+              event.initEvent('change', true, false);
+              sel2.dispatchEvent(event);
+            };
+          
+
+            document.addEventListener("DOMContentLoaded", () => {
+              dynamicSelect("userprog", "usercomp");
+          
+            });
+          })();
+        </script>
+        <script>
+
+            async function getUsers(urll) {
+
+                const response =  await fetch(urll, {
+                    method: "GET",
+                    headers: { "Accept": "application/json" }
+                });
+
+                if (response.ok === true) {
+
+                    const users = await response.json();
+                    const rows = document.querySelector("tbody");
+
+                    users.forEach(user => rows.append(row(user)));
+                }
+                
+            }
+
+            async function getUser(id) {
+                const response = await fetch(`/home copy.html/api/users/${id}`, {
+                    method: "GET",
+                    headers: { "Accept": "application/json" }
+                });
+                if (response.ok === true) {
+                    const user = await response.json();
+                    document.getElementById("userId").value = user.id;
+                    document.getElementById("userName").value = user.name;
+                    document.getElementById("useremail").value = user.email;
+                    document.getElementById("usernumber").value = user.number;
+                    document.getElementById("userprog").value = user.prog;
+                    document.getElementById("usercomp").value = user.comp;
+                    document.getElementById("userdate").value = user.date;
+                    document.getElementById("usercoment").value = user.coment;
+                    
+                }
+                else {
+
+                    const error = await response.json();
+                    console.log(error.messemail);
+                }
+            }
+
+            async function createUser(userName, useremail, usernumber, userprog, usercomp, userdate, usercoment) {
+      
+                const response = await fetch("/home copy.html/api/users", {
+                    method: "POST",
+                    headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name: userName,
+                        email: useremail,
+                        number: usernumber,
+                        prog: userprog,
+                        comp: usercomp,
+                        date: userdate,
+                        coment: usercoment
+                    })
+                });
+                if (response.ok === true) {
+                    const user = await response.json();
+                    document.querySelector("tbody").append(row(user));
+                }
+                else {
+                    const error = await response.json();
+                    console.log(error.messemail);
+                }
+            }
+
+            async function editUser(userId, userName, useremail, usernumber, userprog, usercomp, userdate, usercoment) {
+                const response = await fetch("/home copy.html/api/users", {
+                    method: "PUT",
+                    headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        id: userId,
+                        name: userName,
+                        email: useremail,
+                        number: usernumber,
+                        prog: userprog,
+                        comp: usercomp,
+                        date: userdate,
+                        coment: usercoment
+                    })
+                });
+                if (response.ok === true) {
+                    const user = await response.json();
+                    document.querySelector(`tr[data-rowid='${user.id}']`).replaceWith(row(user));
+                }
+                else {
+                    const error = await response.json();
+                    console.log(error.messemail);
+                }
+            }
+
+            async function deleteUser(id) {
+                const response = await fetch(`/home copy.html/api/users/${id}`, {
+                    method: "DELETE",
+                    headers: { "Accept": "application/json" }
+                });
+                if (response.ok === true) {
+                    const user = await response.json();
+                    document.querySelector(`tr[data-rowid='${user.id}']`).remove();
+                }
+                else {
+                    const error = await response.json();
+                    console.log(error.messemail);
+                }
+            }
+      
+
+            function reset() {
+                document.getElementById("userId").value = 
+                document.getElementById("userName").value = 
+                document.getElementById("useremail").value =
+                document.getElementById("usernumber").value = 
+                document.getElementById("userprog").value =
+                document.getElementById("usercomp").value =
+                document.getElementById("userdate").value =
+                document.getElementById("usercoment").value = "";
+            }
+
+            function row(user) {
+      
+                const tr = document.createElement("tr");
+                tr.setAttribute("data-rowid", user.id);
+      
+                const nameTd = document.createElement("td");
+                nameTd.append(user.name);
+                tr.append(nameTd);
+      
+                const emailTd = document.createElement("td");
+                emailTd.append(user.email);
+                tr.append(emailTd);
+        
+                const numberTd = document.createElement("td");
+                numberTd.append(user.number);
+                tr.append(numberTd);
+
+                const progTd = document.createElement("td");
+                progTd.append(user.prog);
+                tr.append(progTd);
+    
+                const compTd = document.createElement("td");
+                compTd.append(user.comp);
+                tr.append(compTd);
+
+                const dateTd = document.createElement("td");
+                dateTd.append(user.date);
+                tr.append(dateTd);
+                            
+                const comentTd = document.createElement("td");
+                comentTd.append(user.coment);
+                tr.append(comentTd);
+      
+                const linksTd = document.createElement("td");
+      
+                const removeLink = document.createElement("button"); 
+                removeLink.append("Удалить");
+                removeLink.addEventListener("click", async () => await deleteUser(user.id));
+      
+                linksTd.append(removeLink);
+                tr.appendChild(linksTd);
+      
+                return tr;
+            }
+
+            document.getElementById("resetBtn").addEventListener("click", () =>  reset());
+      
+
+            document.getElementById("saveBtn").addEventListener("click", async () => {
+                 
+                const id = document.getElementById("userId").value;
+                const name = document.getElementById("userName").value;
+                const email = document.getElementById("useremail").value;
+                const number = document.getElementById("usernumber").value;
+                const prog = document.getElementById("userprog").value;
+                const comp = document.getElementById("usercomp").value;
+                const date = document.getElementById("userdate").value;
+                const coment = document.getElementById("usercoment").value;
+                if (id === "")
+                    await createUser(name, email, number, prog, comp, date, coment);
+                else
+                    await editUser(id, name, email, number, prog, comp, date, coment);
+                reset();
+            });
+      
+
+            document.getElementById("remuve").onclick = function() {
+                    location.reload()
+                };
+            document.getElementById("revers1").onclick = function() {
+                    const urll = "/home copy2.html/api/users";
+                    getUsers(urll);
+                };
+            document.getElementById("revers2").onclick = function() {
+                    const urll = "/home copy.html/api/users";
+                    getUsers(urll);
+                };
+            
+        </script>
+    		</div>
+	</body>
+</html>

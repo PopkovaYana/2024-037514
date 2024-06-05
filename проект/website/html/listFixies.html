@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Фиксики</title>
+  <link rel="stylesheet" href="../css/slider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="../js/slider.js" defer></script>
+  <script>
+    $(function () {
+      var $menu_popup = $('.menu-popup');
+
+      $(".menu-triger, .menu-close").click(function () {
+        $menu_popup.slideToggle(300, function () {
+          if ($menu_popup.is(':hidden')) {
+            $('body').removeClass('body_pointer');
+          } else {
+            $('body').addClass('body_pointer');
+          }
+        });
+        return false;
+      });
+
+      $(document).on('', function (e) {
+        if (!$(e.target).closest('.menu').length) {
+          $('body').removeClass('body_pointer');
+          $menu_popup.slideUp(300);
+        }
+      });
+    });
+  </script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e4d2e1;
+      margin: 0;
+      font-family: 'century gothic';
+    }
+
+    .itc-slider {
+      width: 320px;
+      height: 390px;
+    }
+
+    .itc-slider-items {
+      counter-reset: slide;
+    }
+
+    .itc-slider-item {
+      flex: 0 0 100%;
+      max-width: 100%;
+      counter-increment: slide;
+      height: 400px;
+      position: relative;
+      background: #e4d2e1;
+    }
+
+    .itc-slider-item::before {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #fff;
+      font-style: italic;
+      font-size: 32px;
+      font-weight: bold;
+      display: block;
+    }
+
+    h1 {
+      color: #FE5100;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 40px;
+    }
+
+    .a {
+      max-width: auto;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .o-nas {
+      margin: 10px;
+      margin-left: auto;
+      margin-right: auto;
+
+      display: flex;
+      justify-content: center;
+      height: 400px;
+      width: 900px;
+
+    }
+
+    .program {
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .elem {
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .text {
+      height: 300px;
+      width: 500px;
+    }
+
+    .knopka {
+      display: inline-block;
+    }
+
+    .pokatak {
+      display: block;
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #333;
+      border: 2px solid #333;
+      letter-spacing: 2px;
+      text-align: center;
+      position: relative;
+      transition: all .35s;
+    }
+
+    span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .pokatak:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #ff003b;
+      transition: all .35s;
+    }
+
+    .pokatak:hover {
+      color: #fff;
+    }
+
+    .pokatak:hover:after {
+      width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      margin-top: 50px;
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+
+    }
+
+    .container .block {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 320px;
+      height: 380px;
+      background: #fff;
+    }
+
+    .container .block .content {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .container .block .content .quote-img {
+      width: 50px;
+    }
+
+    .container .block .content p {
+      color: #666666;
+      padding: 20px 0;
+    }
+
+    .container .block .content .face {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #666666;
+      padding: 4px;
+    }
+
+    .container .block .content h3 {
+      margin-top: 20px;
+      color: #666666;
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .progg {
+      margin-bottom: 20px;
+      height: 320px;
+      width: 100%;
+      font-size: 20px;
+      color: #4a4a4a;
+      margin-left: 0px;
+      margin-right: 0px;
+      xt-align: left;
+      line-height: 1.4;
+      background-color: #fff;
+      padding: 30px;
+    }
+
+    .heder {
+      font-size: 30px;
+    }
+
+    header {
+      position: none;
+    }
+
+    .menu-triger {
+      display: none;
+      width: none;
+      height: none;
+      background: none;
+      position: none;
+      right: none;
+      top: none;
+    }
+
+    .menu-close {
+      display: block;
+      width: none;
+      height: none;
+      background: none;
+      position: none;
+      right: none;
+      top: none;
+      z-index: none;
+    }
+
+    .menu-popup {
+      display: contents;
+      background: none;
+      position: none;
+      left: none;
+      right: none;
+      top: none;
+      box-sizing: none;
+      padding: none;
+      z-index: none;
+      box-shadow: none;
+    }
+
+    .menu-popup ul {
+      margin: none;
+      padding: none;
+      display: flex;
+      justify-content: space-around;
+      padding-left: 0px;
+      margin: 0px;
+    }
+
+    .menu-popup li {
+      list-style: none;
+      margin: none;
+      padding: none;
+    }
+
+    .menu-popup li a {
+      font-size: none;
+      color: none;
+      line-height: none;
+      text-decoration: none;
+    }
+
+    .body_pointer * {
+      cursor: none;
+    }
+
+
+
+
+
+
+
+    @media only screen and (max-width: 768px) {
+      body {
+        margin: 0;
+        font-family: 'century gothic';
+      }
+
+      .itc-slider {
+        width: 320px;
+        height: 390px;
+      }
+
+      .itc-slider-items {
+        counter-reset: slide;
+      }
+
+      .itc-slider-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        counter-increment: slide;
+        height: 400px;
+        position: relative;
+        background: #e4d2e1;
+      }
+
+      .itc-slider-item::before {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: #fff;
+        font-style: italic;
+        font-size: 32px;
+        font-weight: bold;
+        display: block;
+      }
+
+      h1 {
+        color: #FE5100;
+
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        padding: 10px;
+      }
+
+      .a {
+        max-width: auto;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .o-nas {
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+
+        display: flex;
+        justify-content: center;
+        height: 400px;
+        width: 900px;
+
+      }
+
+      .program {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column-reverse;
+      }
+
+      .elem {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+      }
+
+      .text {
+        height: 300px;
+        width: 500px;
+      }
+
+      .knopka {
+        display: inline-block;
+      }
+
+      .pokatak {
+        display: block;
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        text-decoration: none;
+        color: #333;
+        border: 2px solid #333;
+        letter-spacing: 2px;
+        text-align: center;
+        position: relative;
+        transition: all .35s;
+      }
+
+      span {
+        position: relative;
+        z-index: 2;
+      }
+
+      .pokatak:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: #ff003b;
+        transition: all .35s;
+      }
+
+      .pokatak:hover {
+        color: #fff;
+      }
+
+      .pokatak:hover:after {
+        width: 100%;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .container {
+        margin-top: 50px;
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column-reverse;
+        align-items: center;
+
+      }
+
+      .container .block {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 320px;
+        height: 380px;
+        background: #fff;
+      }
+
+      .container .block .content {
+        padding: 30px;
+        text-align: center;
+      }
+
+      .container .block .content .quote-img {
+        width: 50px;
+      }
+
+      .container .block .content p {
+        color: #666666;
+        padding: 20px 0;
+      }
+
+      .container .block .content .face {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #666666;
+        padding: 4px;
+      }
+
+      .container .block .content h3 {
+        margin-top: 20px;
+        color: #666666;
+        font-size: 20px;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+
+      .heder {
+        font-size: 20px;
+
+      }
+
+      .progg {
+        margin-bottom: 20px;
+        /* height: 320px; */
+        width: 100%;
+        /* font-size: 20px; */
+        color: #4a4a4a;
+        /* margin-left: 0px; */
+        /* margin-right: 0px; */
+        xt-align: left;
+        line-height: 1.4;
+        background-color: #fff;
+        padding: 30px;
+      }
+
+      header {
+        position: relative;
+      }
+
+      .menu-triger {
+        display: block;
+        width: 25px;
+        height: 17px;
+        background: url(https://snipp.ru/demo/449/menu.png) 0 0 repeat;
+        position: absolute;
+        right: 20px;
+        top: 28px;
+      }
+
+      .menu-close {
+        display: block;
+        width: 28px;
+        height: 28px;
+        background: url(https://snipp.ru/demo/449/close.png) 0 0 repeat;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 100;
+      }
+
+      .menu-popup {
+        display: none;
+        background: #e4d2e1;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0;
+        box-sizing: border-box;
+        padding: 30px;
+        z-index: 9999;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+
+      .menu-popup ul {
+        margin: 0;
+        padding: 0;
+        display: contents;
+        justify-content: none;
+      }
+
+      .menu-popup li {
+        list-style: none;
+        margin: 10px 0;
+        padding: 0;
+      }
+
+      .menu-popup li a {
+        font-size: 18px;
+        color: rgb(255, 255, 255);
+        line-height: 1.4;
+        text-decoration: none;
+      }
+
+      .body_pointer * {
+        cursor: pointer;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="menu">
+      <a class="menu-triger" href="#"></a>
+      <div class="menu-popup">
+        <a class="menu-close" href="#"></a>
+        <ul>
+          <li><a href="../html/index.html" target="_parent" style="color: #4a4a4a;"><b class="heder">О компании</b></a>
+          </li>
+          <li><a href="../html/index.html" target="_parent" style="color: #4a4a4a;"><b class="heder">Программы</b></a>
+          </li>
+          <li><a href="../../bd/html/formForCompanyRegister.html" target="_parent" style="color: #4a4a4a;"><b
+                class="heder">Для организаций</b></a></li>
+          <li><a href="../../login/templates/login.html" target="_parent" style="color: #4a4a4a;"><b
+                class="heder">Вход</b></a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <h1 align=" center" style="margin-bottom:0px ;">Фиксики</h1>
+  <div class="program">
+    <div class="elem">
+      <div align=" center">
+        <h1 align=" center">Арт-студио</h1>
+      </div>
+      <div class="progg">
+        Стоимость: 10.000 рублей<br><br>Продолжительность: 1 час<br><br>
+        Наполнение:<br>
+        ⭐ Теле зарядка<br>
+        ⭐ Учимся летать с Фиксиками<br>
+        ⭐ Строим башню
+      </div>
+      <div align=" center">
+        <div class="wrapper" align="center"><a href="../../bd/html/form.html"><button
+              class="pokatak"><span>Выбрать</span></button></a></div>
+      </div>
+    </div>
+    <div class="elem">
+      <div align=" center">
+        <h1 align=" center">FunToYOU</h1>
+      </div>
+      <div class="progg">
+        Стоимость: 12.000 рублей<br><br>Продолжительность: 1 час<br><br>
+        Наполнение:<br>
+        ⭐ Теле зарядка<br>
+        ⭐ Ищим детали<br>
+        ⭐ Пробираемся в туннель веселья<br>
+        ⭐ Фотосессия с персонажем
+      </div>
+      <div align=" center">
+        <div class="wrapper" align="center"><a href="../../bd/html/form.html"><button
+              class="pokatak"><span>Выбрать</span></button></a></div>
+      </div>
+    </div>
+    <div class="elem" style="margin-top: 0px;">
+      <div align=" center">
+        <h1 align=" center">Virtual</h1>
+      </div>
+      <div class="progg">
+        Стоимость: 12.000 рублей<br><br>Продолжительность: 1.5 часа<br><br>
+        Наполнение:<br>
+        ⭐ Теле зарядка<br>
+        ⭐ Ищим детали<br>
+        ⭐ Прыгаем в трубопровод<br>
+        ⭐ Фотосессия с персонажем
+      </div>
+      <div align=" center">
+        <div class="wrapper" align="center"><a href="../../bd/html/form.html"><button
+              class="pokatak"><span>Выбрать</span></button></a></div>
+      </div>
+    </div>
+  </div>
+
+  <h1 align=" center" style="margin-top: 100px;">Отзывы клиентов</h1>
+  <div class="container">
+    <div class="itc-slider" data-slider="itc-slider" data-loop="true" data-autoplay="false">
+      <div class="itc-slider-wrapper">
+        <div class="itc-slider-items">
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Великолепный праздник прошёл с фиксиками. Час веселья и сюрпризов.
+                  Дочь Вика и её подружки очень довольны.</p>
+                <img src="../images/face4.jpg" class="face">
+                <h3>Александра</h3>
+              </div>
+            </div>
+          </div>
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Отметили день рождения на 5 + Всё супер!
+                  Все дети играли с удовольствием! Да и взрослые не скучали!</p>
+                <img src="../images/face4.jpg" class="face">
+                <h3>Александра</h3>
+              </div>
+            </div>
+          </div>
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Хочу поблагодарить организаторов за проведенную программу
+                  "Фиксики" я с детьми с удовольствием провели время.
+                  Было очень весело.</p>
+                <img src="../images/face4.jpg" class="face">
+                <h3>Александра</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="itc-slider-btn itc-slider-btn-prev"></button>
+      <button class="itc-slider-btn itc-slider-btn-next"></button>
+    </div>
+    <div class="itc-slider" data-slider="itc-slider" data-loop="true" data-autoplay="false">
+      <div class="itc-slider-wrapper">
+        <div class="itc-slider-items">
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Отметили день рождения на 5 + Всё супер!
+                  Все дети играли с удовольствием! Да и взрослые не скучали!</p>
+                <img src="../images/face2.jpg" class="face">
+                <h3>Виолетта</h3>
+              </div>
+            </div>
+          </div>
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Отметили день рождения на 5 + Всё супер!
+                  Все дети играли с удовольствием! Да и взрослые не скучали!</p>
+                <img src="../images/face2.jpg" class="face">
+                <h3>Виолетта</h3>
+              </div>
+            </div>
+          </div>
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Отметили день рождения на 5 + Всё супер!
+                  Все дети играли с удовольствием! Да и взрослые не скучали!</p>
+                <img src="../images/face2.jpg" class="face">
+                <h3>Виолетта</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="itc-slider-btn itc-slider-btn-prev"></button>
+      <button class="itc-slider-btn itc-slider-btn-next"></button>
+    </div>
+    <div class="itc-slider" data-slider="itc-slider" data-loop="true" data-autoplay="false">
+      <div class="itc-slider-wrapper">
+        <div class="itc-slider-items">
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Хочу поблагодарить организаторов за проведенную программу
+                  "Фиксики" я с детьми с удовольствием провели время.
+                  Было очень весело.</p>
+                <img src="../images/face5.jpg" class="face">
+                <h3>Оксана</h3>
+              </div>
+            </div>
+          </div>
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Хочу поблагодарить организаторов за проведенную программу
+                  "Фиксики" я с детьми с удовольствием провели время.
+                  Было очень весело.</p>
+                <img src="../images/face5.jpg" class="face">
+                <h3>Оксана</h3>
+              </div>
+            </div>
+          </div>
+          <div class="itc-slider-item">
+            <div class="block">
+              <div class="content">
+                <img src="../images/pngwing.com.png" class="quote-img">
+                <p>Хочу поблагодарить организаторов за проведенную программу
+                  "Фиксики" я с детьми с удовольствием провели время.
+                  Было очень весело.</p>
+                <img src="../images/face5.jpg" class="face">
+                <h3>Оксана</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="itc-slider-btn itc-slider-btn-prev"></button>
+      <button class="itc-slider-btn itc-slider-btn-next"></button>
+    </div>
+  </div>
+</body>
+
+</html>
